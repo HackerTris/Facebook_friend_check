@@ -1,0 +1,162 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module friend_check</title>
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>friend_check</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/Users/robannmateja/REMSandbox/desktopApp/friend_check.py">/Users/robannmateja/REMSandbox/desktopApp/friend_check.py</a></font></td></tr></table>
+    <p><tt>This&nbsp;module's&nbsp;functionality&nbsp;shows&nbsp;who&nbsp;likes&nbsp;a&nbsp;logged&nbsp;on&nbsp;Facebook&nbsp;user's&nbsp;posts,&nbsp;and&nbsp;who&nbsp;comments&nbsp;on&nbsp;the&nbsp;posts.<br>
+&nbsp;<br>
+Use&nbsp;case:&nbsp;&nbsp;You&nbsp;got&nbsp;sucked&nbsp;into&nbsp;Facebook...&nbsp;Why&nbsp;you?&nbsp;&nbsp;Well,&nbsp;since&nbsp;you&nbsp;have&nbsp;limited&nbsp;time,&nbsp;you&nbsp;don't&nbsp;want&nbsp;to&nbsp;waste&nbsp;it&nbsp;liking&nbsp;or<br>
+commenting&nbsp;on&nbsp;your&nbsp;friends&nbsp;posts&nbsp;who&nbsp;never&nbsp;do&nbsp;the&nbsp;same&nbsp;for&nbsp;you.&nbsp;&nbsp;What's&nbsp;fair&nbsp;is&nbsp;fair...&nbsp;Use&nbsp;friend_check&nbsp;to&nbsp;figure&nbsp;out&nbsp;who&nbsp;your<br>
+most&nbsp;active&nbsp;friends&nbsp;are!<br>
+&nbsp;<br>
+To&nbsp;use&nbsp;this&nbsp;module,&nbsp;you&nbsp;must&nbsp;first&nbsp;have&nbsp;a&nbsp;valid&nbsp;access&nbsp;token.&nbsp;&nbsp;See&nbsp;facebook__login.py.&nbsp;&nbsp;This&nbsp;access&nbsp;token<br>
+should&nbsp;include&nbsp;all&nbsp;of&nbsp;the&nbsp;permissions&nbsp;shown&nbsp;in&nbsp;the&nbsp;facebook__login.py&nbsp;module.&nbsp;&nbsp;Please&nbsp;refer&nbsp;to&nbsp;the&nbsp;module's&nbsp;documentation&nbsp;for<br>
+restrictions&nbsp;and&nbsp;further&nbsp;usage&nbsp;information.<br>
+&nbsp;<br>
+Data&nbsp;is&nbsp;stored&nbsp;in&nbsp;a&nbsp;mongo&nbsp;db&nbsp;database.&nbsp;&nbsp;Currently,&nbsp;this&nbsp;exists&nbsp;on&nbsp;the&nbsp;local&nbsp;host,&nbsp;but&nbsp;the&nbsp;connection&nbsp;string&nbsp;can<br>
+be&nbsp;changed&nbsp;accordingly.&nbsp;&nbsp;(Eventually,&nbsp;this&nbsp;functionality&nbsp;is&nbsp;intended&nbsp;to&nbsp;be&nbsp;hosted&nbsp;in&nbsp;the&nbsp;cloud.&nbsp;<br>
+&nbsp;<br>
+The&nbsp;main&nbsp;functions&nbsp;in&nbsp;this&nbsp;module&nbsp;include:<br>
+cleanup_data:&nbsp;&nbsp;Reinitalizes&nbsp;the&nbsp;database.<br>
+get_access_token:&nbsp;Retrieves&nbsp;a&nbsp;valid&nbsp;Facebook&nbsp;access&nbsp;token&nbsp;for&nbsp;the&nbsp;logged&nbsp;on&nbsp;user.<br>
+get_my_friends:&nbsp;&nbsp;Get&nbsp;a&nbsp;list&nbsp;of&nbsp;the&nbsp;logged&nbsp;on&nbsp;user's&nbsp;Facebook&nbsp;friends.<br>
+get_my_posts_likes:&nbsp;&nbsp;Get&nbsp;a&nbsp;list&nbsp;of&nbsp;your&nbsp;friends&nbsp;who&nbsp;have&nbsp;liked&nbsp;your&nbsp;posts.<br>
+get_my_posts_comments:&nbsp;&nbsp;Get&nbsp;a&nbsp;list&nbsp;of&nbsp;your&nbsp;friends&nbsp;who&nbsp;have&nbsp;commented&nbsp;on&nbsp;your&nbsp;posts.<br>
+display_likes_info:&nbsp;&nbsp;Display&nbsp;a&nbsp;sorted&nbsp;lists&nbsp;of&nbsp;the&nbsp;friends&nbsp;who&nbsp;have&nbsp;liked&nbsp;your&nbsp;posts,&nbsp;and&nbsp;the&nbsp;number&nbsp;of&nbsp;likes&nbsp;they&nbsp;have&nbsp;issued.<br>
+display_comments_info:&nbsp;&nbsp;Display&nbsp;a&nbsp;sorted&nbsp;list&nbsp;of&nbsp;friends&nbsp;who&nbsp;have&nbsp;commented&nbsp;on&nbsp;your&nbsp;posts,&nbsp;and&nbsp;the&nbsp;number&nbsp;of&nbsp;comments&nbsp;they&nbsp;issued.<br>
+display_sielent_friends:&nbsp;&nbsp;Display&nbsp;a&nbsp;list&nbsp;of&nbsp;your&nbsp;friends&nbsp;who&nbsp;never&nbsp;like&nbsp;or&nbsp;comment&nbsp;on&nbsp;your&nbsp;stuff.<br>
+&nbsp;<br>
+There&nbsp;are&nbsp;a&nbsp;few&nbsp;other&nbsp;functions&nbsp;in&nbsp;this&nbsp;module,&nbsp;that&nbsp;are&nbsp;currently&nbsp;under&nbsp;development.&nbsp;&nbsp;I&nbsp;kept&nbsp;them&nbsp;in&nbsp;here&nbsp;for&nbsp;reference.</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="facebook.html">facebook</a><br>
+<a href="json.html">json</a><br>
+</td><td width="25%" valign=top><a href="operator.html">operator</a><br>
+<a href="pymongo.html">pymongo</a><br>
+</td><td width="25%" valign=top><a href="sys.html">sys</a><br>
+<a href="urllib2.html">urllib2</a><br>
+</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-check_commented_object"><strong>check_commented_object</strong></a>(comments_dict)</dt><dd><tt>Check&nbsp;comment&nbsp;data,&nbsp;and&nbsp;create&nbsp;list&nbsp;of&nbsp;commenters&nbsp;for&nbsp;each&nbsp;post.<br>
+&nbsp;<br>
+This&nbsp;function&nbsp;will&nbsp;process&nbsp;comment&nbsp;information.&nbsp;&nbsp;We&nbsp;are&nbsp;interested&nbsp;in&nbsp;the&nbsp;commenter's&nbsp;name&nbsp;and&nbsp;id.&nbsp;<br>
+&nbsp;<br>
+Arguments:<br>
+comments_dict:&nbsp;This&nbsp;is&nbsp;a&nbsp;list&nbsp;of&nbsp;dictionaries&nbsp;with&nbsp;two&nbsp;keys:&nbsp;&nbsp;&nbsp;data,&nbsp;which&nbsp;points&nbsp;to&nbsp;the&nbsp;comment&nbsp;data-&nbsp;that&nbsp;is,&nbsp;who&nbsp;commented&nbsp;on&nbsp;it&nbsp;and&nbsp;what<br>
+the&nbsp;comments&nbsp;are,&nbsp;and&nbsp;paging,&nbsp;which&nbsp;contains&nbsp;cursor&nbsp;based&nbsp;paging&nbsp;information.</tt></dd></dl>
+ <dl><dt><a name="-check_liked_object"><strong>check_liked_object</strong></a>(id, friends)</dt><dd><tt>Check&nbsp;the&nbsp;liked&nbsp;object&nbsp;to&nbsp;ensure&nbsp;it&nbsp;belongs&nbsp;to&nbsp;the&nbsp;user,&nbsp;and&nbsp;get&nbsp;all&nbsp;of&nbsp;the&nbsp;likers.<br>
+&nbsp;<br>
+This&nbsp;function&nbsp;takes&nbsp;the&nbsp;liked&nbsp;object&nbsp;and&nbsp;checks&nbsp;that&nbsp;a&nbsp;friend&nbsp;actually&nbsp;liked&nbsp;the&nbsp;object&nbsp;(which&nbsp;will&nbsp;exclude<br>
+likes&nbsp;from&nbsp;people&nbsp;who&nbsp;are&nbsp;not&nbsp;friends.&nbsp;&nbsp;This&nbsp;function&nbsp;will&nbsp;also&nbsp;check&nbsp;the&nbsp;exact&nbsp;number&nbsp;of&nbsp;likes.&nbsp;&nbsp;When&nbsp;Facebook&nbsp;stores&nbsp;an<br>
+object's&nbsp;likes,&nbsp;it&nbsp;only&nbsp;stores&nbsp;a&nbsp;count&nbsp;of&nbsp;the&nbsp;likes&nbsp;and&nbsp;the&nbsp;first&nbsp;couple&nbsp;of&nbsp;users&nbsp;who&nbsp;liked&nbsp;the&nbsp;object...&nbsp;so&nbsp;an&nbsp;additional&nbsp;FQL<br>
+based&nbsp;query&nbsp;is&nbsp;done&nbsp;to&nbsp;get&nbsp;ALL&nbsp;of&nbsp;the&nbsp;likes.<br>
+&nbsp;<br>
+Arguments:<br>
+id:&nbsp;&nbsp;Facebook's&nbsp;object&nbsp;id.<br>
+friends:&nbsp;List&nbsp;of&nbsp;logged&nbsp;on&nbsp;user's&nbsp;friends.&nbsp;&nbsp;Actually&nbsp;a&nbsp;dict&nbsp;with&nbsp;facebook&nbsp;user&nbsp;id&nbsp;as&nbsp;key,&nbsp;facebook&nbsp;user&nbsp;name&nbsp;as&nbsp;value.</tt></dd></dl>
+ <dl><dt><a name="-cleanup_data"><strong>cleanup_data</strong></a>()</dt><dd><tt>Remove&nbsp;data&nbsp;from&nbsp;mongo&nbsp;db&nbsp;dictionary.<br>
+&nbsp;<br>
+The&nbsp;data&nbsp;is&nbsp;generated&nbsp;anew&nbsp;for&nbsp;each&nbsp;run.</tt></dd></dl>
+ <dl><dt><a name="-display_comments_info"><strong>display_comments_info</strong></a>()</dt><dd><tt>Display&nbsp;comment&nbsp;information&nbsp;to&nbsp;the&nbsp;console.&nbsp;&nbsp;See&nbsp;above.<br>
+&nbsp;<br>
+This&nbsp;function&nbsp;will&nbsp;output&nbsp;a&nbsp;tally&nbsp;of&nbsp;those&nbsp;who&nbsp;have&nbsp;commented&nbsp;on&nbsp;your&nbsp;posts.</tt></dd></dl>
+ <dl><dt><a name="-display_info"><strong>display_info</strong></a>(description, ranked_friends)</dt><dd><tt>Pretty&nbsp;print&nbsp;information&nbsp;to&nbsp;console.<br>
+&nbsp;<br>
+Pretty&nbsp;print&nbsp;the&nbsp;ranked&nbsp;friends&nbsp;likes.&nbsp;&nbsp;Always&nbsp;a&nbsp;list&nbsp;of&nbsp;tuples&nbsp;with&nbsp;the<br>
+structure&nbsp;(name,count)<br>
+&nbsp;<br>
+Arguments:<br>
+description:&nbsp;&nbsp;Textual&nbsp;description&nbsp;to&nbsp;label&nbsp;the&nbsp;data.<br>
+ranked_friends:&nbsp;&nbsp;List&nbsp;of&nbsp;friends.&nbsp;&nbsp;The&nbsp;friend&nbsp;structure&nbsp;is&nbsp;the&nbsp;friend&nbsp;name,&nbsp;followed&nbsp;by&nbsp;a&nbsp;count&nbsp;-&nbsp;the&nbsp;count&nbsp;usually&nbsp;refers&nbsp;to&nbsp;the<br>
+number&nbsp;of&nbsp;likes&nbsp;or&nbsp;number&nbsp;of&nbsp;comments&nbsp;that&nbsp;the&nbsp;friend&nbsp;has&nbsp;issued.</tt></dd></dl>
+ <dl><dt><a name="-display_likes_info"><strong>display_likes_info</strong></a>()</dt><dd><tt>Display&nbsp;the&nbsp;likes&nbsp;information&nbsp;to&nbsp;the&nbsp;console.&nbsp;&nbsp;Actually,&nbsp;could&nbsp;be&nbsp;displayed&nbsp;in&nbsp;any&nbsp;format,&nbsp;using&nbsp;the&nbsp;correct&nbsp;display_info&nbsp;function.<br>
+&nbsp;<br>
+Consider&nbsp;refactoring&nbsp;this&nbsp;function&nbsp;to&nbsp;pass&nbsp;in&nbsp;the&nbsp;display_info&nbsp;function,&nbsp;which&nbsp;will&nbsp;allow&nbsp;flexibility&nbsp;for&nbsp;different&nbsp;user&nbsp;experiences&nbsp;(web&nbsp;page,<br>
+console,&nbsp;etc.)</tt></dd></dl>
+ <dl><dt><a name="-display_silent_friends"><strong>display_silent_friends</strong></a>(friends)</dt><dd><tt>Display&nbsp;to&nbsp;console&nbsp;those&nbsp;friends&nbsp;who&nbsp;haven't&nbsp;liked&nbsp;or&nbsp;commented&nbsp;on&nbsp;anything.<br>
+&nbsp;<br>
+Consider&nbsp;refactoring&nbsp;to&nbsp;allow&nbsp;flexibility&nbsp;for&nbsp;different&nbsp;user&nbsp;experiences.</tt></dd></dl>
+ <dl><dt><a name="-get_access_token"><strong>get_access_token</strong></a>()</dt><dd><tt>Retrieve&nbsp;a&nbsp;previously&nbsp;stored&nbsp;access&nbsp;token,&nbsp;which&nbsp;gives&nbsp;this&nbsp;app&nbsp;permission&nbsp;to&nbsp;look&nbsp;at&nbsp;your&nbsp;data.<br>
+&nbsp;<br>
+This&nbsp;function&nbsp;currently&nbsp;expects&nbsp;an&nbsp;access&nbsp;token&nbsp;stored&nbsp;in&nbsp;a&nbsp;file.&nbsp;&nbsp;This&nbsp;will&nbsp;need&nbsp;to&nbsp;change&nbsp;once&nbsp;this<br>
+app&nbsp;is&nbsp;hosted&nbsp;in&nbsp;the&nbsp;cloud.</tt></dd></dl>
+ <dl><dt><a name="-get_groups"><strong>get_groups</strong></a>(group_name)</dt><dd><tt>Get&nbsp;groups&nbsp;associated&nbsp;with&nbsp;this&nbsp;users.&nbsp;&nbsp;This&nbsp;function&nbsp;is&nbsp;not&nbsp;currently&nbsp;being&nbsp;used;&nbsp;it&nbsp;is&nbsp;for&nbsp;reference&nbsp;only.<br>
+Arguments:&nbsp;&nbsp;Facebook&nbsp;group&nbsp;name</tt></dd></dl>
+ <dl><dt><a name="-get_my_friends"><strong>get_my_friends</strong></a>()</dt><dd><tt>Get&nbsp;friends&nbsp;associated&nbsp;with&nbsp;the&nbsp;logged&nbsp;in&nbsp;user.<br>
+&nbsp;<br>
+This&nbsp;function&nbsp;will&nbsp;get&nbsp;the&nbsp;first&nbsp;500&nbsp;of&nbsp;the<br>
+logged&nbsp;on&nbsp;user's&nbsp;freinds.&nbsp;&nbsp;The&nbsp;data&nbsp;will&nbsp;be&nbsp;rearragned&nbsp;so<br>
+it&nbsp;is&nbsp;a&nbsp;FB&nbsp;id/name&nbsp;dictionary,&nbsp;with&nbsp;the&nbsp;id&nbsp;as&nbsp;the&nbsp;key.&nbsp;&nbsp;&nbsp;This&nbsp;is&nbsp;useful&nbsp;in&nbsp;some&nbsp;of&nbsp;the&nbsp;other&nbsp;functionality<br>
+which&nbsp;only&nbsp;provides&nbsp;FB&nbsp;id's.</tt></dd></dl>
+ <dl><dt><a name="-get_my_posts_comments"><strong>get_my_posts_comments</strong></a>()</dt><dd><tt>Get&nbsp;comment&nbsp;data&nbsp;(a&nbsp;grouping&nbsp;of&nbsp;users&nbsp;who&nbsp;commented&nbsp;user's&nbsp;posts/<br>
+&nbsp;<br>
+This&nbsp;is&nbsp;similiar&nbsp;to&nbsp;getting&nbsp;the&nbsp;likes,&nbsp;but&nbsp;the&nbsp;structure&nbsp;of&nbsp;the<br>
+data&nbsp;is&nbsp;different.&nbsp;&nbsp;The&nbsp;likes&nbsp;data&nbsp;is&nbsp;associated&nbsp;with&nbsp;a&nbsp;count,&nbsp;whereas&nbsp;the<br>
+comment&nbsp;data&nbsp;is&nbsp;associated&nbsp;with&nbsp;a&nbsp;paging&nbsp;structure.&nbsp;&nbsp;Alternatively,<br>
+we&nbsp;could&nbsp;query&nbsp;the&nbsp;FQL&nbsp;tables&nbsp;for&nbsp;each&nbsp;post&nbsp;associated&nbsp;with&nbsp;a&nbsp;comment,&nbsp;which&nbsp;would<br>
+be&nbsp;slower.<br>
+&nbsp;<br>
+The&nbsp;comments&nbsp;connection&nbsp;supports&nbsp;cursor&nbsp;based&nbsp;pagination,&nbsp;which&nbsp;has&nbsp;a&nbsp;slightly&nbsp;different&nbsp;structure&nbsp;than<br>
+earlier&nbsp;pagination&nbsp;mechanisms.&nbsp;&nbsp;The&nbsp;other&nbsp;graph&nbsp;api&nbsp;endpoints,&nbsp;such<br>
+as&nbsp;posts,&nbsp;do&nbsp;not&nbsp;support&nbsp;cursor&nbsp;based&nbsp;pagination&nbsp;at&nbsp;this&nbsp;time.</tt></dd></dl>
+ <dl><dt><a name="-get_my_posts_likes"><strong>get_my_posts_likes</strong></a>(friends)</dt><dd><tt>Get&nbsp;posts&nbsp;for&nbsp;the&nbsp;user,&nbsp;and&nbsp;find&nbsp;out&nbsp;who&nbsp;liked&nbsp;the&nbsp;post.<br>
+&nbsp;<br>
+Steps:<br>
+1.&nbsp;Reach&nbsp;out&nbsp;to&nbsp;the&nbsp;likes&nbsp;connection&nbsp;of&nbsp;posts:&nbsp;&nbsp;me/posts?fields=likes<br>
+2.&nbsp;Process&nbsp;the&nbsp;set&nbsp;of&nbsp;likes&nbsp;for&nbsp;each&nbsp;post<br>
+&nbsp;<br>
+Do&nbsp;the&nbsp;above&nbsp;for&nbsp;each&nbsp;page&nbsp;of&nbsp;data.&nbsp;&nbsp;Keep&nbsp;getting&nbsp;datapages&nbsp;until&nbsp;there&nbsp;aren't&nbsp;any&nbsp;left.&nbsp;&nbsp;Please&nbsp;note<br>
+that&nbsp;Facebook&nbsp;pagination&nbsp;is&nbsp;undergoing&nbsp;modifications.&nbsp;&nbsp;Different&nbsp;object&nbsp;types&nbsp;accept&nbsp;different&nbsp;types&nbsp;of<br>
+paging&nbsp;mechanisms.<br>
+&nbsp;<br>
+Arguments:<br>
+friends:&nbsp;&nbsp;&nbsp;List&nbsp;of&nbsp;key/value&nbsp;pairs&nbsp;were&nbsp;each&nbsp;pair&nbsp;(facebook&nbsp;id,&nbsp;name)&nbsp;reference&nbsp;a&nbsp;valid&nbsp;friend.</tt></dd></dl>
+ <dl><dt><a name="-pretty_print"><strong>pretty_print</strong></a>(doc)</dt><dd><tt>Debugging&nbsp;printing&nbsp;aid.<br>
+&nbsp;<br>
+Arguments:&nbsp;&nbsp;doc.&nbsp;&nbsp;This&nbsp;is&nbsp;the&nbsp;datastructure&nbsp;stored&nbsp;in&nbsp;the&nbsp;database.<br>
+&nbsp;<br>
+This&nbsp;function&nbsp;is&nbsp;for&nbsp;debugging&nbsp;purposes&nbsp;only.&nbsp;&nbsp;It&nbsp;pretty&nbsp;prints<br>
+the&nbsp;facebook&nbsp;'container'&nbsp;-&nbsp;such&nbsp;as&nbsp;statuses,&nbsp;videos,&nbsp;photos-&nbsp;that&nbsp;we&nbsp;are<br>
+interested&nbsp;in.</tt></dd></dl>
+ <dl><dt><a name="-process_post_comment_data"><strong>process_post_comment_data</strong></a>(data)</dt><dd><tt>Process&nbsp;comment&nbsp;data&nbsp;for&nbsp;storage&nbsp;in&nbsp;mongo&nbsp;db.<br>
+&nbsp;<br>
+This&nbsp;function&nbsp;will&nbsp;coordinate&nbsp;processing&nbsp;comment&nbsp;data.<br>
+&nbsp;<br>
+Arguments:<br>
+data:&nbsp;&nbsp;A&nbsp;list&nbsp;of&nbsp;dictionaries&nbsp;of&nbsp;comment&nbsp;data.&nbsp;&nbsp;The&nbsp;data&nbsp;structure&nbsp;is&nbsp;how&nbsp;Facebook&nbsp;returns&nbsp;the&nbsp;data.&nbsp;&nbsp;Use&nbsp;the&nbsp;Facebook&nbsp;Graph<br>
+API&nbsp;Explorer&nbsp;to&nbsp;understand&nbsp;this&nbsp;structure.</tt></dd></dl>
+ <dl><dt><a name="-process_post_like_data"><strong>process_post_like_data</strong></a>(data, friends)</dt><dd><tt>Process&nbsp;the&nbsp;post's&nbsp;liked&nbsp;data,&nbsp;for&nbsp;insertion&nbsp;into&nbsp;mongo&nbsp;db.<br>
+&nbsp;<br>
+The&nbsp;structure&nbsp;of&nbsp;the&nbsp;mongo&nbsp;doc&nbsp;to&nbsp;be&nbsp;stored&nbsp;includes&nbsp;the&nbsp;object's&nbsp;id,&nbsp;created_time,&nbsp;and&nbsp;a&nbsp;list&nbsp;of&nbsp;"likers".&nbsp;&nbsp;The&nbsp;list&nbsp;consists&nbsp;of&nbsp;a&nbsp;set&nbsp;of<br>
+key/value&nbsp;pairs:&nbsp;&nbsp;Key&nbsp;is&nbsp;the&nbsp;user&nbsp;id&nbsp;who&nbsp;liked&nbsp;the&nbsp;object,&nbsp;value&nbsp;is&nbsp;the&nbsp;name&nbsp;of&nbsp;the&nbsp;user&nbsp;who&nbsp;liked&nbsp;the&nbsp;object.<br>
+&nbsp;<br>
+Arguments:<br>
+data:&nbsp;&nbsp;a&nbsp;dictionary&nbsp;containing&nbsp;the&nbsp;a&nbsp;value&nbsp;for&nbsp;all&nbsp;of&nbsp;the&nbsp;likes&nbsp;data&nbsp;for&nbsp;a&nbsp;particular&nbsp;post.<br>
+friends:&nbsp;&nbsp;List&nbsp;of&nbsp;key/value&nbsp;pairs&nbsp;were&nbsp;each&nbsp;pair&nbsp;(facebook&nbsp;id,&nbsp;name)&nbsp;reference&nbsp;a&nbsp;valid&nbsp;friend.</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>ACCESS_TOKEN</strong> = ''<br>
+<strong>connection</strong> = Connection('localhost', 27017)<br>
+<strong>db</strong> = Database(Connection('localhost', 27017), u'Facebook')</td></tr></table>
+</body></html>
